@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AnimatedProgressBar {
+    }
+    interface EmojiRain {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,19 +24,55 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface RadioGroup {
+    }
+    interface ToggleButton {
+    }
 }
 declare global {
+    interface HTMLAnimatedProgressBarElement extends Components.AnimatedProgressBar, HTMLStencilElement {
+    }
+    var HTMLAnimatedProgressBarElement: {
+        prototype: HTMLAnimatedProgressBarElement;
+        new (): HTMLAnimatedProgressBarElement;
+    };
+    interface HTMLEmojiRainElement extends Components.EmojiRain, HTMLStencilElement {
+    }
+    var HTMLEmojiRainElement: {
+        prototype: HTMLEmojiRainElement;
+        new (): HTMLEmojiRainElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLRadioGroupElement extends Components.RadioGroup, HTMLStencilElement {
+    }
+    var HTMLRadioGroupElement: {
+        prototype: HTMLRadioGroupElement;
+        new (): HTMLRadioGroupElement;
+    };
+    interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
+    }
+    var HTMLToggleButtonElement: {
+        prototype: HTMLToggleButtonElement;
+        new (): HTMLToggleButtonElement;
+    };
     interface HTMLElementTagNameMap {
+        "animated-progress-bar": HTMLAnimatedProgressBarElement;
+        "emoji-rain": HTMLEmojiRainElement;
         "my-component": HTMLMyComponentElement;
+        "radio-group": HTMLRadioGroupElement;
+        "toggle-button": HTMLToggleButtonElement;
     }
 }
 declare namespace LocalJSX {
+    interface AnimatedProgressBar {
+    }
+    interface EmojiRain {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,15 +87,27 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface RadioGroup {
+    }
+    interface ToggleButton {
+    }
     interface IntrinsicElements {
+        "animated-progress-bar": AnimatedProgressBar;
+        "emoji-rain": EmojiRain;
         "my-component": MyComponent;
+        "radio-group": RadioGroup;
+        "toggle-button": ToggleButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "animated-progress-bar": LocalJSX.AnimatedProgressBar & JSXBase.HTMLAttributes<HTMLAnimatedProgressBarElement>;
+            "emoji-rain": LocalJSX.EmojiRain & JSXBase.HTMLAttributes<HTMLEmojiRainElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "radio-group": LocalJSX.RadioGroup & JSXBase.HTMLAttributes<HTMLRadioGroupElement>;
+            "toggle-button": LocalJSX.ToggleButton & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;
         }
     }
 }
