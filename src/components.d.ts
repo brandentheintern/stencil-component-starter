@@ -27,7 +27,16 @@ export namespace Components {
     interface RadioGroup {
     }
     interface ToggleButton {
+        "checked": boolean;
     }
+}
+export interface EmojiRainCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLEmojiRainElement;
+}
+export interface ToggleButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLToggleButtonElement;
 }
 declare global {
     interface HTMLAnimatedProgressBarElement extends Components.AnimatedProgressBar, HTMLStencilElement {
@@ -36,7 +45,19 @@ declare global {
         prototype: HTMLAnimatedProgressBarElement;
         new (): HTMLAnimatedProgressBarElement;
     };
+    interface HTMLEmojiRainElementEventMap {
+        "emoji-rain-start": any;
+        "emoji-rain-stop": any;
+    }
     interface HTMLEmojiRainElement extends Components.EmojiRain, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLEmojiRainElementEventMap>(type: K, listener: (this: HTMLEmojiRainElement, ev: EmojiRainCustomEvent<HTMLEmojiRainElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLEmojiRainElementEventMap>(type: K, listener: (this: HTMLEmojiRainElement, ev: EmojiRainCustomEvent<HTMLEmojiRainElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLEmojiRainElement: {
         prototype: HTMLEmojiRainElement;
@@ -54,7 +75,18 @@ declare global {
         prototype: HTMLRadioGroupElement;
         new (): HTMLRadioGroupElement;
     };
+    interface HTMLToggleButtonElementEventMap {
+        "buttonToggled": any;
+    }
     interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLToggleButtonElementEventMap>(type: K, listener: (this: HTMLToggleButtonElement, ev: ToggleButtonCustomEvent<HTMLToggleButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLToggleButtonElementEventMap>(type: K, listener: (this: HTMLToggleButtonElement, ev: ToggleButtonCustomEvent<HTMLToggleButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLToggleButtonElement: {
         prototype: HTMLToggleButtonElement;
@@ -72,6 +104,8 @@ declare namespace LocalJSX {
     interface AnimatedProgressBar {
     }
     interface EmojiRain {
+        "onEmoji-rain-start"?: (event: EmojiRainCustomEvent<any>) => void;
+        "onEmoji-rain-stop"?: (event: EmojiRainCustomEvent<any>) => void;
     }
     interface MyComponent {
         /**
@@ -90,6 +124,8 @@ declare namespace LocalJSX {
     interface RadioGroup {
     }
     interface ToggleButton {
+        "checked"?: boolean;
+        "onButtonToggled"?: (event: ToggleButtonCustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "animated-progress-bar": AnimatedProgressBar;
