@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
 
 @Component({
   tag: 'toggle-button',
@@ -10,8 +10,13 @@ export class toggleButton {
 
   @Event() buttonToggled: EventEmitter;
   buttonToggledHandler() {
-    console.log('button toggled to be ' + `${this.checked}`);
     this.buttonToggled.emit();
+  }
+
+  @Method()
+  async clickToggleBox() {
+    this.checked = !this.checked;
+    this.buttonToggledHandler();
   }
 
   render() {
@@ -21,8 +26,7 @@ export class toggleButton {
           type="checkbox"
           checked={this.checked}
           onClick={() => {
-            this.checked = !this.checked;
-            this.buttonToggledHandler();
+            this.clickToggleBox();
           }}
         />
         <span class="slider"></span>

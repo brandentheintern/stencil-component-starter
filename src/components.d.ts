@@ -28,6 +28,7 @@ export namespace Components {
     }
     interface ToggleButton {
         "checked": boolean;
+        "clickToggleBox": () => Promise<void>;
     }
 }
 export interface EmojiRainCustomEvent<T> extends CustomEvent<T> {
